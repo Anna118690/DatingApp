@@ -12,7 +12,7 @@ namespace API.Services
         private readonly SymmetricSecurityKey _key;
         public TokenService(IConfiguration config)
         {
-            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
+            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"])); // to jest w aapsettings.develpment.json "super secret ungessable key"
         }
         public string CreateToken(AppUser user)
         {
@@ -26,7 +26,7 @@ namespace API.Services
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(7),
+                Expires = DateTime.Now.AddDays(7), // po 7 dniach nowy token
                 SigningCredentials = creds
             };
 

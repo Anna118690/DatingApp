@@ -18,7 +18,6 @@ namespace API.Controllers
             _context = context;
             _tokenService = tokenService;
             
-
         }
 
         [HttpPost("register")] // POST: api / account (bo w nazwie kontrolera jest acount / register - ta nazwa tutaj)
@@ -66,7 +65,7 @@ namespace API.Controllers
 
              }
 
-              return new UserDto
+            return new UserDto
              {
                 Username = user.UserName,
                 Token = _tokenService.CreateToken(user)
